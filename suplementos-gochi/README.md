@@ -1,89 +1,111 @@
-# 🛍️ Proyecto Integrador - E-commerce Frontend
+# 🏋️ Suplementos Gochi - E-commerce Frontend
 
-Este es el frontend del **Proyecto Integrador** desarrollado con **React**, **Vite** y **Bootstrap 5**. Es una aplicación web moderna (Single Page Application - SPA) de comercio electrónico interactiva que incluye autenticación de usuarios, gestión completa (CRUD) de productos y almacenamiento local de sesiones.
+Este es el frontend de **Suplementos Gochi**, un Trabajo Práctico (Proyecto Integrador) desarrollado con **React**, **Vite** y **Bootstrap 5**. Es una aplicación web moderna (Single Page Application - SPA) orientada a la venta de suplementos deportivos, que incluye autenticación de usuarios, gestión completa (CRUD) de productos, panel de administración y un diseño altamente responsivo.
 
 ---
 
 ## 🚀 Características Principales
 
-*   **Autenticación de Usuarios**: 
-    *   Registro de usuarios (`/user/register`).
-    *   Inicio de sesión (`/user/login`) con persistencia en `sessionStorage` mediante hooks dedicados.
-    *   Cierre de sesión dinámico con cambio de estado global.
-*   **CRUD Completo de Productos**:
-    *   **Lectura**: Listado interactivo de productos con tarjetas descriptivas (`/products`).
-    *   **Creación**: Formulario controlado para dar de alta nuevos productos con validación (`/products/create`).
-    *   **Edición**: Formulario de edición con precarga de datos según ID (`/products/edit/:id`).
-    *   **Eliminación**: Borrado seguro con confirmación del navegador.
-*   **Enrutamiento Dinámico**: Sistema de rutas implementado con `react-router-dom` (v7).
-*   **Diseño Responsivo**: Maquetado adaptable utilizando **Bootstrap 5**.
+* 🔐 **Autenticación y Sesiones**: 
+  * Registro de nuevos usuarios y validación de credenciales (`/user/register`, `/user/login`).
+  * Persistencia segura de sesión en `sessionStorage` gestionada con Custom Hooks.
+  * Rutas protegidas que verifican el estado de autenticación (Admin / Usuario normal).
+
+* 📦 **CRUD Completo de Productos**:
+  * **Listado Interactivo**: Tarjetas de productos atractivas y filtrado/ordenamiento (`/products`).
+  * **Administración Segura**: Creación (`/products/create`) y Edición (`/products/edit/:id`) protegidas solo para administradores.
+  * **Eliminación**: Borrado de productos y usuarios con validaciones (SweetAlert o confirmaciones nativas).
+
+* 🛒 **Sistema de Carrito de Compras**:
+  * Interfaz para agregar, quitar y modificar cantidades de suplementos en el carrito de compras.
+
+* 👥 **Panel de Administración (Dashboard)**:
+  * Vista exclusiva para administradores donde pueden gestionar a todos los usuarios registrados (con permisos de Superadmin).
+  * Modal detallado para visualizar la información de los clientes.
+
+* ⚡ **Diseño y Rendimiento**:
+  * Maquetado 100% responsivo (adaptable a celulares y tablets) utilizando **Bootstrap 5** y **Vanilla CSS**.
+  * Carruseles rápidos, fluidos e interactivos en la página de inicio (Hero y Destacados).
+  * Estilos altamente personalizados sin depender excesivamente de frameworks (arquitectura CSS customizada).
 
 ---
 
 ## 🛠️ Tecnologías y Librerías
 
-El stack principal de desarrollo incluye:
+El stack principal de desarrollo de la aplicación es:
 
-*   **[React](https://react.dev/) (v19)**: Biblioteca core de JavaScript para construir interfaces de usuario declarativas y basadas en componentes.
-*   **[Vite](https://vite.dev/) (v8)**: Herramienta de construcción frontend extremadamente veloz para el servidor de desarrollo y bundler de producción.
-*   **[React Router](https://reactrouter.com/) (v7)**: Para el manejo de navegación interna y rutas dinámicas.
-*   **[Bootstrap](https://getbootstrap.com/) (v5.3)**: Framework de CSS integrado mediante CDN para estilos rápidos y componentes responsivos.
-*   **[ESLint](https://eslint.org/) (v10)**: Herramienta de análisis estático para garantizar la calidad y consistencia del código JavaScript.
+* **[React](https://react.dev/) (v18+)**: Construcción de interfaces de usuario y componentización.
+* **[Vite](https://vite.dev/)**: Servidor de desarrollo instantáneo y empaquetador ultrarrápido.
+* **[React Router DOM](https://reactrouter.com/) (v7)**: Manejo del enrutamiento dinámico y protección de rutas (SPA).
+* **[Bootstrap](https://getbootstrap.com/) (v5.3)**: Grilla responsiva, botones y layout estructural.
+* **Vanilla CSS**: Sistema propio de variables CSS, gradientes, animaciones e interfaces personalizadas.
+* **SweetAlert2** / Notificaciones custom: Para alertas y modales interactivos en la UX.
 
 ---
 
 ## 📁 Estructura del Proyecto
 
-A continuación se detalla la organización de los archivos del proyecto para facilitar su mantenimiento y escalabilidad:
+A continuación, la organización del repositorio:
 
 ```text
-proyecto-integrador/
-├── .env                  # Variables de entorno locales (URL de la API)
-├── .env.example          # Plantilla para variables de entorno requeridas
-├── index.html            # Punto de entrada HTML (Integra Bootstrap 5 desde CDN)
-├── vite.config.js        # Configuración del empaquetador Vite
-├── package.json          # Dependencias y scripts de ejecución npm
+suplementos-gochi/
+├── .env                  # Variables de entorno locales (URL de la API REST)
+├── .env.example          # Plantilla para variables de entorno
+├── index.html            # Punto de entrada HTML (Integra Google Fonts y Bootstrap)
+├── package.json          # Dependencias y scripts
 ├── src/
 │   ├── main.jsx          # Punto de entrada de React (montaje en el DOM)
-│   ├── App.jsx           # Componente principal que envuelve el Layout
-│   ├── App.css           # Estilos CSS globales y específicos
-│   ├── router.jsx        # Configuración centralizada de rutas (React Router)
-│   ├── config.js         # Configuración y mapeo de variables de entorno
-│   ├── hooks/            # Hooks personalizados para separar la lógica de la UI
-│   │   ├── products/     # Hooks para la gestión de productos
-│   │   │   ├── useDeleteProduct.jsx
-│   │   │   ├── useGetProductById.jsx
-│   │   │   ├── useGetProducts.jsx
-│   │   │   ├── usePatchProduct.jsx
-│   │   │   └── usePostProduct.jsx
-│   │   └── user/         # Hooks para la gestión de usuarios y sesión
-│   │       ├── useAuth.jsx
-│   │       ├── useLoginUser.jsx
-│   │       └── useRegisterUser.jsx
-│   └── components/       # Componentes de React estructurados por rol
-│       ├── ProductCard.jsx  # Tarjeta individual para mostrar datos del producto
-│       ├── Input.jsx        # Componente reutilizable para formularios
-│       ├── layout/          # Componentes de estructura global de la página
-│       │   ├── Header.jsx   # Barra de navegación adaptable (Navbar)
-│       │   ├── Footer.jsx   # Pie de página de la aplicación
-│       │   └── Layout.jsx   # Layout general (utiliza <Outlet />)
-│       └── pages/           # Vistas o páginas principales de la aplicación
-│           ├── Home.jsx              # Página de inicio
-│           ├── Products.jsx          # Listado y visualización de productos
-│           ├── CreateProductPage.jsx # Formulario de creación de producto
-│           ├── EditProductPage.jsx   # Formulario de modificación de producto
-│           ├── RegisterUserPage.jsx  # Registro de nuevo usuario
-│           └── LoginUserPage.jsx     # Login de usuario existente
+│   ├── App.jsx           # Componente raíz y Layout principal
+│   ├── App.css           # Estilos globales y tokens CSS (variables)
+│   ├── router.jsx        # Configuración de las Rutas y protección de endpoints
+│   ├── styles/           # 🎨 Arquitectura CSS modularizada por componente
+│   │   ├── AdminPanelPage.css
+│   │   ├── CartPage.css
+│   │   ├── ContactPage.css
+│   │   ├── FastCarousel.css
+│   │   ├── Footer.css
+│   │   ├── Gallery.css
+│   │   ├── Header.css
+│   │   ├── HeroAutoCarousel.css
+│   │   ├── ProductCard.css
+│   │   ├── Products.css
+│   │   └── UserDetailModal.css
+│   ├── hooks/            # Hooks personalizados (Custom Hooks para Lógica)
+│   │   ├── products/     # Fetch, creación y borrado de productos
+│   │   └── user/         # Hooks de Auth y manejo del estado de usuarios
+│   └── components/       # Componentes de UI
+│       ├── layout/       
+│       │   ├── Footer.jsx
+│       │   ├── Header.jsx
+│       │   ├── Layout.jsx
+│       │   └── ProtectedRoute.jsx
+│       ├── pages/        
+│       │   ├── AdminPanelPage.jsx
+│       │   ├── CartPage.jsx
+│       │   ├── ContactPage.jsx
+│       │   ├── CreateProductPage.jsx
+│       │   ├── EditProductPage.jsx
+│       │   ├── Home.jsx
+│       │   ├── LoginUserPage.jsx
+│       │   ├── Products.jsx
+│       │   └── RegisterUserPage.jsx
+│       ├── Carousel.jsx
+│       ├── FastCarousel.jsx
+│       ├── Gallery.jsx
+│       ├── HeroAutoCarousel.jsx
+│       ├── Input.jsx
+│       ├── ProductCard.jsx
+│       └── UserDetailModal.jsx
 ```
 
 ---
 
-## ⚙️ Configuración del Entorno
+## ⚙️ Configuración del Entorno (Local)
 
-La aplicación necesita conectarse a una API REST (generalmente un servidor `json-server` o un backend propio). Para configurar la URL de conexión:
+Para que el frontend funcione correctamente, necesitas conectarlo a tu backend (API REST con JSON-Server u otro).
 
-1.  Crea un archivo llamado `.env` en la raíz del proyecto.
-2.  Agrega la siguiente variable especificando la dirección de tu servidor backend:
+1. Crea un archivo `.env` en la raíz del proyecto.
+2. Añade la variable de entorno de tu API:
 
 ```env
 VITE_API_URL="http://localhost:3000/"
@@ -93,40 +115,22 @@ VITE_API_URL="http://localhost:3000/"
 
 ## 🚦 Instalación y Ejecución
 
-Sigue estos pasos para levantar la aplicación en tu entorno local:
+Sigue estos pasos para probar la aplicación en tu computadora:
 
-### Requisitos Previos
-
-*   [Node.js](https://nodejs.org/) (versión 18 o superior recomendada)
-*   Un gestor de paquetes como **npm** (incluido por defecto con Node.js) o **yarn**
-
-### Paso 1: Instalar dependencias
-Abre tu terminal en la raíz del proyecto y ejecuta:
+1. **Instalar las dependencias** abriendo una terminal en la raíz de la carpeta:
 ```bash
 npm install
 ```
 
-### Paso 2: Ejecutar el servidor de desarrollo
-Inicia el proyecto de forma local con soporte HMR (Hot Module Replacement) ejecutando:
+2. **Ejecutar el servidor local** (Vite):
 ```bash
 npm run dev
 ```
-La consola te mostrará la URL de acceso local (por defecto `http://localhost:5173/`).
+
+3. Abre el navegador en la URL indicada en consola (normalmente `http://localhost:5173/`).
 
 ---
 
-## 🛠️ Scripts de npm Disponibles
+## 🏆 Proyecto de Entrega (Trabajo Práctico)
 
-*   `npm run dev`: Inicia el servidor de desarrollo local de Vite.
-*   `npm run build`: Compila y optimiza la aplicación para el despliegue en producción dentro de la carpeta `dist`.
-*   `npm run lint`: Ejecuta ESLint para analizar errores sintácticos y buenas prácticas de código.
-*   `npm run preview`: Previsualiza localmente el build de producción generado.
-
----
-
-## 🎯 Próximas Implementaciones (Roadmap)
-
-Según las necesidades identificadas, se planifica implementar próximamente las siguientes funcionalidades:
-1.  🛒 **Carrito de Compras**: Gestión de pedidos en tiempo real con persistencia.
-2.  🔒 **Rutas Protegidas**: Restricción de acceso para rutas administrativas (`/products/create` y `/products/edit`) solo para usuarios autenticados.
-3.  🛡️ **Panel de Administrador**: Listado de usuarios con filtros avanzados de búsqueda y asignación de roles.
+Esta versión de **Suplementos Gochi** representa la entrega integradora del módulo de Frontend. Todo el código fue diseñado pensando en las buenas prácticas de React (componentización, separación de la lógica en custom hooks) y en proveer una experiencia de usuario (UX) moderna y llamativa.
