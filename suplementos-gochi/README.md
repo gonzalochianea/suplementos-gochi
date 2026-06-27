@@ -89,7 +89,6 @@ suplementos-gochi/
 │       │   ├── LoginUserPage.jsx
 │       │   ├── Products.jsx
 │       │   └── RegisterUserPage.jsx
-│       ├── Carousel.jsx
 │       ├── FastCarousel.jsx
 │       ├── Gallery.jsx
 │       ├── HeroAutoCarousel.jsx
