@@ -1,0 +1,122 @@
+/* --- TABLA Y ESTILOS DEL CARRITO --- */
+.cart-page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.cart-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  color: var(--text-primary);
+}
+
+.cart-table th,
+.cart-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.cart-table th {
+  background-color: var(--bg-primary);
+  color: var(--color-electric);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cart-table td {
+  font-size: 1rem;
+}
+
+.cart-qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.qty-btn {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.qty-btn:hover {
+  background-color: var(--color-electric);
+  color: var(--bg-primary);
+  border-color: var(--color-electric);
+}
+
+.qty-number {
+  font-weight: 600;
+  min-width: 15px;
+  text-align: center;
+}
+
+.cart-total-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px dashed var(--border-color);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cart-total-title {
+  font-size: 1.6rem;
+  color: var(--text-primary);
+}
+
+.cart-total-value {
+  color: var(--color-electric);
+  font-weight: 800;
+}
+
+.cart-buttons-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-success {
+  background-color: var(--success-color);
+  color: #fff;
+}
+
+.btn-success:hover {
+  background-color: #059669;
+}
+
+.btn-success:disabled {
+  background-color: var(--border-color);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* --- ESTILOS EXTRAÍDOS --- */
+.cart-empty-msg { text-align: center; color: var(--text-secondary); margin: 2rem 0; }
+.cart-font-500 { font-weight: 500; }
+.cart-font-600 { font-weight: 600; }

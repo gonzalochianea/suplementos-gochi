@@ -1,0 +1,82 @@
+/* --- VARIABLES Y CONFIGURACIÓN GLOBAL — GOCHI FITNESS (TEMA DARK NEON) --- */
+:root {
+  /* Fondos */
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-main: #f8f9fa;
+
+  /* Acento principal — Verde Esmeralda (Neón oscuro) */
+  --primary: #0d817c;
+  --primary-hover: #0a6b66;
+  --color-electric: #0d817c;
+  --color-electric-hover: #0a6b66;
+
+  /* Textos */
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+
+  /* Bordes y sombras */
+  --border-color: #e5e5e5;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(13, 129, 124, 0.15);
+  /* Sombra esmeralda suave */
+
+  /* Semánticos */
+  --danger-color: #ef4444;
+  --danger-hover: #dc2626;
+  --success-color: #39ff14;
+
+  /* Globales */
+  --font-family: 'Outfit', sans-serif;
+  --transition: all 0.25s ease;
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Estructura para Footer Pegajoso */
+#root {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+main {
+  padding: 2rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
