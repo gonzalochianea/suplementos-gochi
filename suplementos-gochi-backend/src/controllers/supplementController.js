@@ -43,6 +43,9 @@ export const deleteSupplementController = async (req, res) => {
     if (!deletedSupplement) {
         return res.status(404).json({ error: "No existe ese suplemento" })
     }
+    if (deletedSupplement.image) {
+        await deleteImage(deletedSupplement.image)
+    }
     res.status(200).json({
         message: "Suplemento eliminado con éxito",
         supplement: deletedSupplement
