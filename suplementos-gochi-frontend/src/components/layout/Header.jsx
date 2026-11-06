@@ -118,7 +118,7 @@ function Header() {
               </NavLink>
             </li>
             <li>
-              <NavLink className="nav-link" to="/contacto" onClick={closeMobileMenu}>
+              <NavLink className="nav-link" to="/contact" onClick={closeMobileMenu}>
                 Contacto
               </NavLink>
             </li>
@@ -145,7 +145,7 @@ function Header() {
             )}
             {isAdmin && (
               <li>
-                <NavLink className="nav-link" to="/admin/users" onClick={closeMobileMenu}>
+                <NavLink className="nav-link" to="/admin" onClick={closeMobileMenu}>
                   Panel Admin
                 </NavLink>
               </li>

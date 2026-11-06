@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { WHATSAPP_NUMBER } from "../../config";
 import "../../styles/Footer.css";
 
 function Footer() {
@@ -17,19 +18,31 @@ function Footer() {
             </NavLink>
           </li>
           <li>
-            <NavLink className="footer-link" to="/contacto">
+            <NavLink className="footer-link" to="/contact">
               Contacto
             </NavLink>
           </li>
         </ul>
-        
+
         <p className="footer-copy">© 2026 Suplementos Gochi. Todos los derechos reservados.</p>
-        
+
         <div className="footer-social">
-          <a href="https://www.instagram.com/suplementosgochi" target="_blank" rel="noreferrer" className="social-icon" aria-label="Instagram">
+          <a
+            href="https://www.instagram.com/suplementosgochi"
+            target="_blank"
+            rel="noreferrer"
+            className="social-icon"
+            aria-label="Instagram"
+          >
             <i className="fa-brands fa-instagram"></i>
           </a>
-          <a href="https://wa.me/541166818345" target="_blank" rel="noreferrer" className="social-icon" aria-label="WhatsApp">
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}`}
+            target="_blank"
+            rel="noreferrer"
+            className="social-icon"
+            aria-label="WhatsApp"
+          >
             <i className="fa-brands fa-whatsapp"></i>
           </a>
         </div>

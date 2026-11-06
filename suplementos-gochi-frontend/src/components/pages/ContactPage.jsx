@@ -3,16 +3,18 @@ import Input from "../Input";
 import { notifySuccess } from "../../utils/notify";
 import "../../styles/ContactPage.css";
 
+const INITIAL_CONTACT_FORM = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  reason: "",
+  isClient: "no",
+  message: "",
+};
+
 function ContactPage() {
-  const [formData, setFormData] = useState({
-    nombre: "",
-    apellido: "",
-    email: "",
-    telefono: "",
-    motivo: "",
-    esCliente: "no",
-    mensaje: "",
-  });
+  const [formData, setFormData] = useState(INITIAL_CONTACT_FORM);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,44 +24,35 @@ function ContactPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Formulario de Contacto Enviado:", formData);
-    
-    notifySuccess(
-      "¡Mensaje Enviado!",
-      `Gracias ${formData.nombre} por contactarte con Suplementos Gochi. Nos comunicaremos a la brevedad.`
-    );
-
-    // Resetear el formulario tras el envío
-    handleReset();
+  const handleReset = () => {
+    setFormData(INITIAL_CONTACT_FORM);
   };
 
-  const handleReset = () => {
-    setFormData({
-      nombre: "",
-      apellido: "",
-      email: "",
-      telefono: "",
-      motivo: "",
-      esCliente: "no",
-      mensaje: "",
-    });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    notifySuccess(
+      "¡Mensaje Enviado!",
+      `Gracias ${formData.firstName} por contactarte con Suplementos Gochi. Nos comunicaremos a la brevedad.`
+    );
+
+    // Reiniciar el formulario tras el envío
+    handleReset();
   };
 
   return (
     <div className="contact-container">
       <h1>Contacto</h1>
       <p className="contact-subtitle">
-        ¿Tienes dudas o necesitas un presupuesto personalizado? Escríbenos.
+        ¿Tenés dudas o necesitás asesoramiento personalizado sobre suplementación? Escribinos.
       </p>
 
       <form onSubmit={handleSubmit} className="contact-form">
         <Input
           label="Nombre"
-          labelId="nombre"
+          labelId="firstName"
           type="text"
-          value={formData.nombre}
+          value={formData.firstName}
           onChange={handleChange}
           isRequired={true}
           placeholder="Tu nombre"
@@ -67,9 +60,9 @@ function ContactPage() {
 
         <Input
           label="Apellido"
-          labelId="apellido"
+          labelId="lastName"
           type="text"
-          value={formData.apellido}
+          value={formData.lastName}
           onChange={handleChange}
           isRequired={true}
           placeholder="Tu apellido"
@@ -87,43 +80,44 @@ function ContactPage() {
 
         <Input
           label="Teléfono"
-          labelId="telefono"
+          labelId="phone"
           type="tel"
-          value={formData.telefono}
+          value={formData.phone}
           onChange={handleChange}
           isRequired={true}
           placeholder="+54 11 1234-5678"
         />
 
         <div className="form-group">
-          <label htmlFor="motivo">Motivo de contacto</label>
+          <label htmlFor="reason">Motivo de contacto</label>
           <select
-            id="motivo"
-            name="motivo"
-            value={formData.motivo}
+            id="reason"
+            name="reason"
+            value={formData.reason}
             onChange={handleChange}
             required
             className="form-input"
           >
-            <option value="" disabled>Seleccione una opción</option>
-            <option value="comprar">Comprar productos</option>
-            <option value="presupuesto">Presupuesto / Cotización</option>
-            <option value="soporte">Soporte Técnico / Reclamos</option>
-            <option value="mayorista">Ventas Mayoristas</option>
-            <option value="otro">Otro Motivo</option>
+            <option value="" disabled>
+              Seleccioná una opción
+            </option>
+            <option value="buy">Comprar suplementos</option>
+            <option value="quote">Presupuesto / Cotización</option>
+            <option value="support">Soporte / Consultas de pedidos</option>
+            <option value="wholesale">Ventas Mayoristas</option>
+            <option value="other">Otro motivo</option>
           </select>
         </div>
 
-
         <div className="radio-group-container">
-          <p className="radio-group-title">¿Es cliente nuestro?</p>
+          <p className="radio-group-title">¿Sos cliente nuestro?</p>
           <div className="radio-options">
             <label className="radio-label">
               <input
                 type="radio"
-                name="esCliente"
-                value="si"
-                checked={formData.esCliente === "si"}
+                name="isClient"
+                value="yes"
+                checked={formData.isClient === "yes"}
                 onChange={handleChange}
               />
               Sí
@@ -131,9 +125,9 @@ function ContactPage() {
             <label className="radio-label">
               <input
                 type="radio"
-                name="esCliente"
+                name="isClient"
                 value="no"
-                checked={formData.esCliente === "no"}
+                checked={formData.isClient === "no"}
                 onChange={handleChange}
               />
               No
@@ -142,16 +136,15 @@ function ContactPage() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="mensaje">Mensaje / Consulta</label>
+          <label htmlFor="message">Mensaje / Consulta</label>
           <textarea
-            id="mensaje"
-            name="mensaje"
-            value={formData.mensaje}
+            id="message"
+            name="message"
+            value={formData.message}
             onChange={handleChange}
             required
             rows="5"
-            placeholder="Escribe aquí tu consulta o requerimiento..."
-            className="form-input"
+            placeholder="Escribí aquí tu consulta o requerimiento..."
             className="form-input textarea-resize-vertical"
           ></textarea>
         </div>

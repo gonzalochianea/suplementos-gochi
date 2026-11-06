@@ -1,135 +1,120 @@
-# 🏋️ Suplementos Gochi - E-commerce Frontend
+# 🏋️ Suplementos Gochi — Frontend (React 19 + Vite)
 
-Este es el frontend de **Suplementos Gochi**, un Trabajo Práctico (Proyecto Integrador) desarrollado con **React**, **Vite** y **Bootstrap 5**. Es una aplicación web moderna (Single Page Application - SPA) orientada a la venta de suplementos deportivos, que incluye autenticación de usuarios, gestión completa (CRUD) de productos, panel de administración y un diseño altamente responsivo.
-
----
-
-## 🚀 Características Principales
-
-* 🔐 **Autenticación y Sesiones**: 
-  * Registro de nuevos usuarios y validación de credenciales (`/user/register`, `/user/login`).
-  * Persistencia segura de sesión en `sessionStorage` gestionada con Custom Hooks.
-  * Rutas protegidas que verifican el estado de autenticación (Admin / Usuario normal).
-
-* 📦 **CRUD Completo de Productos**:
-  * **Listado Interactivo**: Tarjetas de productos atractivas y filtrado/ordenamiento (`/products`).
-  * **Administración Segura**: Creación (`/products/create`) y Edición (`/products/edit/:id`) protegidas solo para administradores.
-  * **Eliminación**: Borrado de productos y usuarios con validaciones (SweetAlert o confirmaciones nativas).
-
-* 🛒 **Sistema de Carrito de Compras**:
-  * Interfaz para agregar, quitar y modificar cantidades de suplementos en el carrito de compras.
-
-* 👥 **Panel de Administración (Dashboard)**:
-  * Vista exclusiva para administradores donde pueden gestionar a todos los usuarios registrados (con permisos de Superadmin).
-  * Modal detallado para visualizar la información de los clientes.
-
-* ⚡ **Diseño y Rendimiento**:
-  * Maquetado 100% responsivo (adaptable a celulares y tablets) utilizando **Bootstrap 5** y **Vanilla CSS**.
-  * Carruseles rápidos, fluidos e interactivos en la página de inicio (Hero y Destacados).
-  * Estilos altamente personalizados sin depender excesivamente de frameworks (arquitectura CSS customizada).
+Aplicación Web SPA (**Single Page Application**) del e-commerce **Suplementos Gochi**, desarrollada con **React 19**, **Vite** y **React Router DOM v7**, integrada al 100% con nuestra API RESTful en Node.js + Express 5 + MongoDB.
 
 ---
 
-## 🛠️ Tecnologías y Librerías
+## 🚀 Tecnologías Utilizadas
 
-El stack principal de desarrollo de la aplicación es:
-
-* **[React](https://react.dev/) (v18+)**: Construcción de interfaces de usuario y componentización.
-* **[Vite](https://vite.dev/)**: Servidor de desarrollo instantáneo y empaquetador ultrarrápido.
-* **[React Router DOM](https://reactrouter.com/) (v7)**: Manejo del enrutamiento dinámico y protección de rutas (SPA).
-* **[Bootstrap](https://getbootstrap.com/) (v5.3)**: Grilla responsiva, botones y layout estructural.
-* **Vanilla CSS**: Sistema propio de variables CSS, gradientes, animaciones e interfaces personalizadas.
-* **SweetAlert2** / Notificaciones custom: Para alertas y modales interactivos en la UX.
+- **React 19**: Biblioteca principal basada en componentes funcionales y Custom Hooks.
+- **Vite 8**: Entorno de empaquetado ultrarrápido con Hot Module Replacement (HMR).
+- **React Router DOM v7**: Enrutamiento declarativo (`createBrowserRouter`), rutas anidadas (`<Outlet />`) y protección de rutas por rol (`<ProtectedRoute />`).
+- **Context API + `sessionStorage`**: Gestión global de sesión de usuario y token **JWT** (`AuthContext`).
+- **SweetAlert2**: Alertas modales de confirmación y notificaciones tipo *Toast* (`src/utils/notify.js`).
+- **CSS3 Modular con Variables Nativas**: Diseño responsivo *Mobile-First* sin dependencia de frameworks pesados.
+- **PropTypes**: Validación de tipos en las propiedades de componentes reutilizables.
 
 ---
 
-## 📁 Estructura del Proyecto
+## 📂 Arquitectura del Proyecto (`Estándar Corporativo Internacional`)
 
-A continuación, la organización del repositorio:
+Siguiendo las mejores prácticas profesionales de la industria:
+- **100% del código fuente** (nombres de componentes, hooks, variables, estados, funciones y rutas) está escrito en **Inglés**.
+- **100% de la interfaz de usuario (UI)**, alertas, textos visibles y comentarios explicativos están en **Español**.
 
 ```text
-suplementos-gochi/
-├── .env                  # Variables de entorno locales (URL de la API REST)
-├── .env.example          # Plantilla para variables de entorno
-├── index.html            # Punto de entrada HTML (Integra Google Fonts y Bootstrap)
-├── package.json          # Dependencias y scripts
+suplementos-gochi-frontend/
+├── public/
+│   └── carousel/                        # Banners y portadas WebP de las categorías
 ├── src/
-│   ├── main.jsx          # Punto de entrada de React (montaje en el DOM)
-│   ├── App.jsx           # Componente raíz y Layout principal
-│   ├── App.css           # Estilos globales y tokens CSS (variables)
-│   ├── router.jsx        # Configuración de las Rutas y protección de endpoints
-│   ├── styles/           # 🎨 Arquitectura CSS modularizada por componente
-│   │   ├── AdminPanelPage.css
-│   │   ├── CartPage.css
-│   │   ├── ContactPage.css
-│   │   ├── FastCarousel.css
-│   │   ├── Footer.css
-│   │   ├── Gallery.css
-│   │   ├── Header.css
-│   │   ├── HeroAutoCarousel.css
-│   │   ├── ProductCard.css
-│   │   ├── Products.css
-│   │   └── UserDetailModal.css
-│   ├── hooks/            # Hooks personalizados (Custom Hooks para Lógica)
-│   │   ├── products/     # Fetch, creación y borrado de productos
-│   │   └── user/         # Hooks de Auth y manejo del estado de usuarios
-│   └── components/       # Componentes de UI
-│       ├── layout/       
-│       │   ├── Footer.jsx
-│       │   ├── Header.jsx
-│       │   ├── Layout.jsx
-│       │   └── ProtectedRoute.jsx
-│       ├── pages/        
-│       │   ├── AdminPanelPage.jsx
-│       │   ├── CartPage.jsx
-│       │   ├── ContactPage.jsx
-│       │   ├── CreateProductPage.jsx
-│       │   ├── EditProductPage.jsx
-│       │   ├── Home.jsx
-│       │   ├── LoginUserPage.jsx
-│       │   ├── Products.jsx
-│       │   └── RegisterUserPage.jsx
-│       ├── FastCarousel.jsx
-│       ├── Gallery.jsx
-│       ├── HeroAutoCarousel.jsx
-│       ├── Input.jsx
-│       ├── ProductCard.jsx
-│       └── UserDetailModal.jsx
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Header.jsx               # Barra de navegación con autocompletado y menú móvil
+│   │   │   ├── Footer.jsx               # Pie de página institucional y redes sociales
+│   │   │   ├── Layout.jsx               # Estructura base (Header + Main + Footer)
+│   │   │   └── ProtectedRoute.jsx       # Guardián de rutas privadas y de administrador
+│   │   ├── pages/
+│   │   │   ├── Home.jsx                 # Inicio con Hero Banner, carrusel de categorías y beneficios
+│   │   │   ├── Products.jsx             # Catálogo con filtros por categoría, búsqueda y ordenamiento
+│   │   │   ├── CreateProductPage.jsx    # Formulario de alta de suplemento con subida de imagen (Admin)
+│   │   │   ├── EditProductPage.jsx      # Formulario de edición de suplemento e imagen (Admin)
+│   │   │   ├── AdminPanelPage.jsx       # Dashboard de gestión de categorías e inventario (Admin)
+│   │   │   ├── CartPage.jsx             # Carrito de compras con validación de stock y checkout por WhatsApp
+│   │   │   ├── ContactPage.jsx          # Formulario de contacto y asesoramiento
+│   │   │   ├── LoginUserPage.jsx        # Inicio de sesión contra POST /api/users/login
+│   │   │   └── RegisterUserPage.jsx     # Registro de cuenta contra POST /api/users/register
+│   │   ├── FastCarousel.jsx             # Carrusel interactivo (drag-to-scroll) de categorías
+│   │   ├── HeroAutoCarousel.jsx         # Portada principal animada
+│   │   ├── Input.jsx                    # Campo de formulario controlado reutilizable
+│   │   └── ProductCard.jsx              # Tarjeta de suplemento del catálogo
+│   ├── context/
+│   │   └── AuthContext.jsx              # Estado global de autenticación (user, token, isAdmin)
+│   ├── hooks/
+│   │   ├── cart/
+│   │   │   └── useCart.jsx              # Persistencia y operaciones del carrito en sessionStorage
+│   │   ├── products/
+│   │   │   ├── useGetProducts.jsx       # Carga paralela (Promise.all) de suplementos y categorías
+│   │   │   ├── useGetProductById.jsx    # Obtención del detalle de un suplemento por su ObjectId
+│   │   │   ├── usePostProduct.jsx       # Creación de suplemento + subida multipart de imagen
+│   │   │   ├── usePatchProduct.jsx      # Edición parcial de suplemento + reemplazo de imagen
+│   │   │   └── useDeleteProduct.jsx     # Eliminación de suplemento con token JWT
+│   │   └── user/
+│   │       ├── useAuth.jsx              # Hook consumidor del AuthContext
+│   │       ├── useLoginUser.jsx         # Petición de login y recepción de token JWT
+│   │       └── useRegisterUser.jsx      # Petición de registro de usuario
+│   ├── styles/                          # Hojas de estilo modulares por componente/página
+│   ├── utils/
+│   │   └── notify.js                    # Helpers reutilizables de SweetAlert2
+│   ├── App.css                          # Variables CSS globales (:root) y reset
+│   ├── App.jsx                          # Componente raíz con AuthProvider y Layout
+│   ├── config.js                        # Configuración centralizada (API_URL y WHATSAPP_NUMBER)
+│   ├── main.jsx                         # Punto de entrada con RouterProvider
+│   └── router.jsx                       # Definición de rutas de la SPA
+├── .env.example                         # Plantilla de variables de entorno
+├── BITACORA_DESARROLLO.md               # Guía de estudio paso a paso de la construcción del Frontend
+└── package.json
 ```
 
 ---
 
-## ⚙️ Configuración del Entorno (Local)
+## ⚙️ Instalación y Puesta en Marcha
 
-Para que el frontend funcione correctamente, necesitas conectarlo a tu backend (API REST con JSON-Server u otro).
+### 1. Requisitos Previos
+- **Node.js** v18 o superior.
+- Tener el servidor **Backend (`suplementos-gochi-backend`)** corriendo en `http://localhost:3000`.
 
-1. Crea un archivo `.env` en la raíz del proyecto.
-2. Añade la variable de entorno de tu API:
-
-```env
-VITE_API_URL="http://localhost:3000/"
-```
-
----
-
-## 🚦 Instalación y Ejecución
-
-Sigue estos pasos para probar la aplicación en tu computadora:
-
-1. **Instalar las dependencias** abriendo una terminal en la raíz de la carpeta:
+### 2. Instalar Dependencias
 ```bash
+cd suplementos-gochi-frontend
 npm install
 ```
 
-2. **Ejecutar el servidor local** (Vite):
+### 3. Configurar Variables de Entorno
+Crear un archivo `.env` en la raíz de `suplementos-gochi-frontend` (podés copiar `.env.example`):
+```env
+VITE_API_URL=http://localhost:3000/api/
+```
+
+### 4. Iniciar el Servidor de Desarrollo
 ```bash
 npm run dev
 ```
-
-3. Abre el navegador en la URL indicada en consola (normalmente `http://localhost:5173/`).
+La aplicación estará disponible en `http://localhost:5173`.
 
 ---
 
-## 🏆 Proyecto de Entrega (Trabajo Práctico)
+## 🔐 Roles y Permisos en la Interfaz
 
-Esta versión de **Suplementos Gochi** representa la entrega integradora del módulo de Frontend. Todo el código fue diseñado pensando en las buenas prácticas de React (componentización, separación de la lógica en custom hooks) y en proveer una experiencia de usuario (UX) moderna y llamativa.
+| Funcionalidad | Visitante | Cliente (`client`) | Administrador (`admin`) |
+| :--- | :---: | :---: | :---: |
+| Explorar catálogo, buscar y filtrar por categoría | ✅ | ✅ | ✅ |
+| Formulario de contacto | ✅ | ✅ | ✅ |
+| Registro e inicio de sesión | ✅ | ✅ | ✅ |
+| Agregar al carrito y finalizar pedido por WhatsApp | ❌ | ✅ | ✅ |
+| Crear, editar y eliminar suplementos y subir imágenes | ❌ | ❌ | ✅ |
+| Acceder al Panel Admin (`/admin`) y gestionar categorías | ❌ | ❌ | ✅ |
+
+---
+
+## 📖 Bitácora de Estudio
+Revisá el archivo [`BITACORA_DESARROLLO.md`](./BITACORA_DESARROLLO.md) para estudiar el paso a paso cronológico de cómo se construyó cada capa del Frontend desde cero.

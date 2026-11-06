@@ -50,7 +50,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: var(--success-color);
+  background-color: var(--color-electric);
   color: #fff;
   padding: 0.25rem 0.6rem;
   border-radius: 4px;
@@ -152,7 +152,7 @@
 
 .btn-outline-danger:hover {
   background-color: var(--danger-color);
-  color: var(--text-primary);
+  color: #fff;
 }
 
 .admin-actions {
@@ -164,50 +164,6 @@
   flex: 1;
   padding: 0.4rem;
   font-size: 0.8rem;
-}
-
-   SELECTOR DE TALLES EN CARD
-   =========================== */
-
-.size-selector {
-  display: flex;
-  gap: 0.4rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-
-.size-btn {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--border-color);
-  background: var(--bg-main);
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.size-btn:hover:not(:disabled) {
-  border-color: var(--primary);
-  color: var(--primary);
-}
-
-.size-btn.selected {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: #fff;
-}
-
-.size-btn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-  text-decoration: line-through;
 }
 
 .out-of-stock-text {

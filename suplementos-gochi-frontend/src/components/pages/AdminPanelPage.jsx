@@ -124,7 +124,7 @@ function AdminPanelPage() {
       {/* Sidebar de navegación rápida */}
       <aside className="admin-sidebar-custom">
         <h2 className="admin-sidebar-title">Panel Admin</h2>
-        <NavLink to="/admin/users" className="admin-sidebar-link">
+        <NavLink to="/admin" className="admin-sidebar-link">
           <span className="admin-icon">📊</span> Inventario y Categorías
         </NavLink>
         <NavLink to="/products" className="admin-sidebar-link">
