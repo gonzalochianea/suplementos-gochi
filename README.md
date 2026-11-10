@@ -5,6 +5,15 @@ Trabajo Práctico Final Integrador — **UTN (Universidad Tecnológica Nacional)
 
 ---
 
+## 🌐 Enlaces de Producción (Deploy en Vivo)
+
+- **🛒 Tienda Online (Frontend en Vercel):** [https://suplementos-gochi.vercel.app/](https://suplementos-gochi.vercel.app/)
+- **⚙️ API RESTful (Backend en Render):** [https://suplementos-gochi-backend.onrender.com/](https://suplementos-gochi-backend.onrender.com/)
+- **📄 Documentación Interactiva Swagger UI:** [https://suplementos-gochi-backend.onrender.com/api-docs](https://suplementos-gochi-backend.onrender.com/api-docs)
+- **🗄️ Base de Datos y Storage en la Nube:** MongoDB Atlas (`suplementos_gochi`) + Supabase Storage (`uploads`)
+
+---
+
 ## 📂 Estructura del Monorepo
 
 Este repositorio unifica el ecosistema completo de la tienda online **Suplementos Gochi**:

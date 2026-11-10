@@ -5,6 +5,13 @@
 
 API RESTful robusta y modular para la gestión integral del e-commerce de nutrición deportiva **Suplementos Gochi**. Implementa operaciones CRUD completas, arquitectura en capas con **Capa de Servicios**, relaciones entre colecciones con `populate`, autenticación **JWT**, encriptación con **bcrypt**, subida de imágenes con **Multer + Supabase Storage**, documentación interactiva **Swagger (OpenAPI 3.0)** y pruebas de integración automatizadas con **Jest + Supertest**.
 
+## 🌐 Despliegue en Producción
+
+- **URL Base de la API (Render):** [https://suplementos-gochi-backend.onrender.com](https://suplementos-gochi-backend.onrender.com)
+- **Documentación Interactiva Swagger UI:** [https://suplementos-gochi-backend.onrender.com/api-docs](https://suplementos-gochi-backend.onrender.com/api-docs)
+- **Cliente Web SPA (Vercel):** [https://suplementos-gochi.vercel.app/](https://suplementos-gochi.vercel.app/)
+- **Base de Datos y Almacenamiento Cloud:** MongoDB Atlas + Supabase Storage (`STORAGE=supabase`)
+
 ---
 
 ## 🛠️ 1. Listado de Tecnologías Utilizadas

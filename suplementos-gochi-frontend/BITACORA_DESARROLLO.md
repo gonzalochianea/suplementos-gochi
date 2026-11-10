@@ -965,3 +965,34 @@ createRoot(document.getElementById('root')).render(
 3. **¿Cómo funciona la subida de imágenes desde el formulario de React?**
    - En `CreateProductPage` y `EditProductPage`, primero enviamos los datos JSON del suplemento (`name`, `price`, `stock`, `category`). Si el administrador seleccionó un archivo físico en el `<input type="file">`, empaquetamos ese archivo en un objeto `new FormData()` bajo la clave `"image"` y hacemos una segunda petición `PUT /api/supplements/:id/image`, donde el Backend la procesa con **Multer** y la almacena localmente o en **Supabase Storage**.
 
+---
+
+## ☁️ Fase 10: Despliegue en Producción en Vercel
+
+### Paso 10.1: Configuración de Rewrites para SPA (`vercel.json`)
+En una **Single Page Application (SPA)** con `react-router-dom`, las rutas como `/products`, `/cart` o `/admin` existen en memoria gracias a JavaScript, pero no son archivos físicos en el servidor. Para evitar que Vercel devuelva un error `404 Not Found` cuando un usuario recarga la página (`F5`) en una ruta interna, creamos `vercel.json` en la raíz de `suplementos-gochi-frontend`:
+
+```json
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+```
+
+### Paso 10.2: Configuración del Proyecto y Variables de Entorno en Vercel
+- **Root Directory:** `suplementos-gochi-frontend`
+- **Framework Preset:** `Vite`
+- **Variable de Entorno de Producción:**
+  ```env
+  VITE_API_URL=https://suplementos-gochi-backend.onrender.com/api/
+  ```
+- **Enlaces finales del ecosistema Full Stack en Producción:**
+  - **Frontend en Vercel:** [https://suplementos-gochi.vercel.app/](https://suplementos-gochi.vercel.app/)
+  - **Backend en Render:** [https://suplementos-gochi-backend.onrender.com/](https://suplementos-gochi-backend.onrender.com/)
+  - **Swagger UI en Vivo:** [https://suplementos-gochi-backend.onrender.com/api-docs](https://suplementos-gochi-backend.onrender.com/api-docs)
+
+

@@ -2,6 +2,12 @@
 
 Aplicación Web SPA (**Single Page Application**) del e-commerce **Suplementos Gochi**, desarrollada con **React 19**, **Vite** y **React Router DOM v7**, integrada al 100% con nuestra API RESTful en Node.js + Express 5 + MongoDB.
 
+## 🌐 Enlaces en Producción
+
+- **Aplicación Web en Vivo (Vercel):** [https://suplementos-gochi.vercel.app/](https://suplementos-gochi.vercel.app/)
+- **API Backend (Render):** [https://suplementos-gochi-backend.onrender.com/](https://suplementos-gochi-backend.onrender.com/)
+- **Documentación Swagger UI:** [https://suplementos-gochi-backend.onrender.com/api-docs](https://suplementos-gochi-backend.onrender.com/api-docs)
+
 ---
 
 ## 🚀 Tecnologías Utilizadas

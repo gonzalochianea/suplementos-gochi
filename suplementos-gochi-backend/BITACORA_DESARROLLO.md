@@ -823,4 +823,27 @@ En esta fase incorporamos el sistema de autenticación y autorización basado en
 
 ---
 
-_(Esta bitácora se irá actualizando paso a paso a lo largo de todo el desarrollo)._
+## ☁️ FASE 14: Despliegue en Producción (MongoDB Atlas + Supabase Storage + Render)
+
+### Paso 14.1: Migración de Base de Datos a MongoDB Atlas y Ejecución de `npm run seed`
+- **Cluster en la nube:** `Cluster0` alojado en **AWS São Paulo (`sa-east-1`)** con MongoDB 8.0.
+- **Seguridad y Red:**
+  - Usuario de base de datos configurado con permisos de lectura y escritura (`atlasAdmin`) y lista de acceso de red habilitada (`0.0.0.0/0`) para permitir conexiones desde el servidor de producción en Render.
+  - Se utilizó la cadena de conexión estándar de Replica Set (*Legacy URI String* con `ssl=true`, `replicaSet` y `authSource=admin`) apuntando a la base `suplementos_gochi`, evitando bloqueos de consultas DNS `SRV` de proveedores de internet locales.
+- **Población inicial en la nube:** Se ejecutó `npm run seed` poblando exitosamente en MongoDB Atlas las **6 categorías**, los **271 suplementos** y los **2 usuarios de prueba** (`admin@gochi.com` y `cliente@gochi.com`).
+
+### Paso 14.2: Almacenamiento Multimedia en Supabase Storage (`STORAGE=supabase`)
+- **Bucket público:** Se configuró el bucket público **`uploads`** en Supabase Storage junto con su política de acceso para operaciones `SELECT`, `INSERT`, `UPDATE` y `DELETE`.
+- **Verificación de subida:** Se comprobó el endpoint `PUT /api/supplements/:id/image` autenticado con JWT de administrador, almacenando las imágenes en el CDN de Supabase (`https://jlvlfazfogzpmupddyfd.supabase.co/storage/v1/object/public/uploads/...`).
+
+### Paso 14.3: Deploy del Servidor Express en Render
+- **Configuración del Web Service en Render:**
+  - **Repositorio:** `gonzalochianea/suplementos-gochi` (rama `main`)
+  - **Root Directory:** `suplementos-gochi-backend`
+  - **Build Command:** `npm install`
+  - **Start Command:** `node src/index.js`
+- **Enlaces oficiales en producción:**
+  - **API RESTful:** `https://suplementos-gochi-backend.onrender.com`
+  - **Swagger UI (`/api-docs`):** `https://suplementos-gochi-backend.onrender.com/api-docs`
+  - **Frontend SPA (Vercel):** `https://suplementos-gochi.vercel.app/`
+
